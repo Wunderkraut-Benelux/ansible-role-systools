@@ -5,13 +5,13 @@
 
 - name: Bash global aliases
   lineinfile:
-    dest: "{{ systools_bash_alaises_path }}"
+    dest: "{{ systools_bash_aliases_path }}"
     create: yes
     mode: 0644
     line: 'alias {{ item.alias }}="{{ item.command }}"'
     regexp: "^alias {{ item.alias }}="
-  with_items: systools_bash_alaises
-  when: systools_bash_alaises != false
+  with_items: systools_bash_aliases
+  when: systools_bash_aliases != false
 
 - name: GIT global configuration
   template:

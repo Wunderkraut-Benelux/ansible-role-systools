@@ -1,12 +1,12 @@
 ---
-systools_bash_alaises:
+systools_bash_aliases:
   - { alias: 'ls',
       command: 'ls --color=auto' }
   - { alias: 'll',
       command: 'ls -lHa' }
   - { alias: 'grepr',
       command: 'grep -rn --color --exclude-dir=.svn' }
-systools_bash_alaises_path: "/etc/bash.bashrc"
+systools_bash_aliases_path: "/etc/bash.bashrc"
 
 systools_git_configfile: "/etc/gitconfig"
 systools_git_config_autosetuprebase: "always"
