@@ -1,0 +1,37 @@
+---
+systools_bash_alaises:
+  - { alias: 'ls',
+      command: 'ls --color=auto' }
+  - { alias: 'll',
+      command: 'ls -lHa' }
+  - { alias: 'grepr',
+      command: 'grep -rn --color --exclude-dir=.svn' }
+systools_bash_alaises_path: "/etc/bash.bashrc"
+
+systools_git_configfile: "/etc/gitconfig"
+systools_git_config_autosetuprebase: "always"
+systools_git_config_editor: "vi"
+systools_git_config_filemode: "false"
+systools_git_config_sslverify: "false"
+
+systools_lc_all: "LC_ALL='en_US.UTF-8'"
+
+systools_packages:
+  - apachetop
+  - curl
+  - git-core
+  - htop
+  - iftop
+  - iotop
+  - links
+  - vim
+  - vim-common
+
+systools_vim_config:
+  - "syntax on"
+  - "set ruler"
+  - "set expandtab"
+  - "set tabstop=2"
+  - "set softtabstop=2"
+  - "set shiftwidth=2"
+  - "set autoindent"

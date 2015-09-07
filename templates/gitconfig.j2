@@ -1,0 +1,30 @@
+[alias]
+  a = add
+  br = branch
+  chunkyadd = add --patch
+  st = status
+  co = checkout
+  unpushed = diff origin/master..HEAD --name-status
+
+[branch]
+  autosetuprebase = {{ systools_git_config_autosetuprebase }}
+
+[core]
+  fileMode = {{ systools_git_config_filemode }}
+  editor = {{ systools_git_config_editor }}
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[http]
+  sslVerify = false
+  postBuffer = 2M

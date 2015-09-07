@@ -1,0 +1,42 @@
+---
+- name: Install systools packages
+  apt: "name={{ item }} state=installed"
+  with_items: systools_packages
+
+- name: Bash global aliases
+  lineinfile:
+    dest: "{{ systools_bash_alaises_path }}"
+    create: yes
+    mode: 0644
+    line: 'alias {{ item.alias }}="{{ item.command }}"'
+    regexp: "^alias {{ item.alias }}="
+  with_items: systools_bash_alaises
+  when: systools_bash_alaises != false
+
+- name: GIT global configuration
+  template:
+    src: gitconfig.j2
+    dest: "{{ systools_git_configfile }}"
+    group: root
+    owner: root
+    mode: 0644
+  when: systools_git_configfile != false
+
+- name: Environment settings
+  lineinfile:
+    dest: /etc/environment
+    line: "{{ systools_lc_all }}"
+    regexp: "^LC_ALL"
+    state: present
+
+- name: Remove some keys for the root user
+  authorized_key: user=root
+                  key="{{ item }}"
+                  state=absent
+  with_file: non_authorized_keys_root
+
+- name: Set up authorized_keys for the root user
+  authorized_key: user=root
+                  key="{{ item }}"
+                  state=present
+  with_file: authorized_keys_root
