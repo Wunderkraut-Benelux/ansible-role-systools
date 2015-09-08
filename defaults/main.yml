@@ -8,6 +8,8 @@ systools_bash_aliases:
       command: 'grep -rn --color --exclude-dir=.svn' }
 systools_bash_aliases_path: "/etc/bash.bashrc"
 
+systools_cronjobs: [ ]
+
 systools_git_configfile: "/etc/gitconfig"
 systools_git_config_autosetuprebase: "always"
 systools_git_config_editor: "vi"

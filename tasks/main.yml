@@ -13,6 +13,17 @@
   with_items: systools_bash_aliases
   when: systools_bash_aliases != false
 
+- name: Cronjobs
+  cron: name="{{ item.name }}"
+        minute="{{ item.minute }}"
+        hour="{{item.hour}}"
+        job="{{ item.job }}"
+        state="{{ item.state }}"
+        user="{{ item.user }}"
+  with_items: systools_cronjobs
+  when: systools_cronjobs != false
+
+
 - name: GIT global configuration
   template:
     src: gitconfig.j2
