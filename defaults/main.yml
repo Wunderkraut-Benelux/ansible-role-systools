@@ -25,6 +25,7 @@ systools_lc_all: "LC_ALL='en_US.UTF-8'"
 
 systools_packages:
   - apachetop
+  - augeas-tools
   - curl
   - git-core
   - htop
