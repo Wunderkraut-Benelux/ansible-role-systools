@@ -13,6 +13,13 @@
   with_items: systools_bash_alaises
   when: systools_bash_alaises != false
 
+- name: Environment settings
+  lineinfile:
+    dest: /etc/environment
+    line: "{{ systools_lc_all }}"
+    regexp: "^LC_ALL"
+    state: present
+
 - name: GIT global configuration
   template:
     src: gitconfig.j2
@@ -22,12 +29,12 @@
     mode: 0644
   when: systools_git_configfile != false
 
-- name: Environment settings
+- name: History store immediatly with formatted time
   lineinfile:
-    dest: /etc/environment
-    line: "{{ systools_lc_all }}"
-    regexp: "^LC_ALL"
-    state: present
+    dest: /etc/bash.bashrc
+    line: "{{ item }}"
+    regexp: "^{{ item }}"
+  with_items: systools_history
 
 - name: Remove some keys for the root user
   authorized_key: user=root

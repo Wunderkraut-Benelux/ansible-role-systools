@@ -14,6 +14,11 @@ systools_git_config_editor: "vi"
 systools_git_config_filemode: "false"
 systools_git_config_sslverify: "false"
 
+systools_history:
+  - "export HISTTIMEFORMAT=\"%d.%m.%y %T \""
+  - "shopt -s histappend"
+  - "PROMPT_COMMAND=\"history -a;$PROMPT_COMMAND\""
+
 systools_lc_all: "LC_ALL='en_US.UTF-8'"
 
 systools_packages:
