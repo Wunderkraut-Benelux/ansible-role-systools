@@ -1,7 +1,8 @@
 ---
 - name: Install systools packages
   apt: "name={{ item }} state=installed"
-  with_items: systools_packages
+  with_items:
+    - "{{ systools_packages }}"
 
 - name: Bash global aliases
   lineinfile:
@@ -10,7 +11,8 @@
     mode: 0644
     line: 'alias {{ item.alias }}="{{ item.command }}"'
     regexp: "^alias {{ item.alias }}="
-  with_items: systools_bash_aliases
+  with_items:
+    - "{{ systools_bash_aliases }}"
   when: systools_bash_aliases != false
 
 - name: Cronjobs
@@ -20,7 +22,8 @@
         job="{{ item.job }}"
         state="{{ item.state }}"
         user="{{ item.user }}"
-  with_items: systools_cronjobs
+  with_items:
+    - "{{ systools_cronjobs }}"
   when: systools_cronjobs != false
 
 
@@ -45,16 +48,5 @@
     dest: /etc/bash.bashrc
     line: "{{ item }}"
     regexp: "^{{ item }}"
-  with_items: systools_history
-
-- name: Remove some keys for the root user
-  authorized_key: user=root
-                  key="{{ item }}"
-                  state=absent
-  with_file: non_authorized_keys_root
-
-- name: Set up authorized_keys for the root user
-  authorized_key: user=root
-                  key="{{ item }}"
-                  state=present
-  with_file: authorized_keys_root
+  with_items:
+    - "{{ systools_history }}"
