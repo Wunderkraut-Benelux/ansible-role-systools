@@ -26,7 +26,6 @@
     - "{{ systools_cronjobs }}"
   when: systools_cronjobs != false
 
-
 - name: Environment settings
   lineinfile:
     dest: /etc/environment
