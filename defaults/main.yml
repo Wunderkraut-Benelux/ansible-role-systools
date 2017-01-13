@@ -19,7 +19,7 @@ systools_git_config_sslverify: "false"
 systools_history:
   - "export HISTTIMEFORMAT=\"%d.%m.%y %T \""
   - "shopt -s histappend"
-  - "PROMPT_COMMAND=\"history -a;$PROMPT_COMMAND\""
+  - "PROMPT_COMMAND='history -a'"
 
 systools_lc_all: "LC_ALL='en_US.UTF-8'"
 
@@ -43,3 +43,6 @@ systools_vim_config:
   - "set softtabstop=2"
   - "set shiftwidth=2"
   - "set autoindent"
+
+  # SSH keys
+authorized_keys: [ ]

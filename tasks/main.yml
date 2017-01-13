@@ -50,3 +50,13 @@
     regexp: "^{{ item }}"
   with_items:
     - "{{ systools_history }}"
+
+- name: Set authorized_keys for users
+  authorized_key:
+    user: "{{ item.user }}"
+    key: "{{ item.key }}"
+    state: present
+    validate_certs: False
+  with_items:
+    - "{{ authorized_keys }}"
+  when: authorized_keys != false
