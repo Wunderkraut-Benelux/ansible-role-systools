@@ -53,9 +53,10 @@
 
 - name: Set authorized_keys for users
   authorized_key:
-    user: "{{ item.user }}"
+    exclusive: "{{ item.exclusive }}"
     key: "{{ item.key }}"
     state: present
+    user: "{{ item.user }}"
     validate_certs: False
   with_items:
     - "{{ authorized_keys }}"
