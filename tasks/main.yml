@@ -26,7 +26,6 @@
     - "{{ systools_cronjobs }}"
   when: systools_cronjobs != false
 
-
 - name: Environment settings
   lineinfile:
     dest: /etc/environment
@@ -50,3 +49,14 @@
     regexp: "^{{ item }}"
   with_items:
     - "{{ systools_history }}"
+
+- name: Set authorized_keys for users
+  authorized_key:
+    exclusive: "{{ item.exclusive }}"
+    key: "{{ item.key }}"
+    state: present
+    user: "{{ item.user }}"
+    validate_certs: False
+  with_items:
+    - "{{ authorized_keys }}"
+  when: authorized_keys != false
