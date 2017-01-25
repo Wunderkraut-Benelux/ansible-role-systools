@@ -5,6 +5,7 @@
     state: present
   with_items:
     - "{{ systools_apt_sources }}"
+  when: systools_apt_sources is defined
 
 - name: Apt key
   apt_key:
@@ -12,6 +13,7 @@
   with_items:
     - "{{ systools_apt_keys }}"
   register: systools_apt_repo_result
+  when: systools_apt_keys is defined
 
 - name: Update apt-key
   command: apt-key update
@@ -29,6 +31,7 @@
     purge: yes
   with_items:
     - "{{ systools_packages_purge }}"
+  when: systools_packages_purge is defined
 
 - name: Install systools packages
   apt:
@@ -46,6 +49,7 @@
     force: yes
   with_items:
     - "{{ systools_packages_additional }}"
+  when: systools_packages_additional is defined
 
 - name: Install additional jessie-backports packages
   apt:
@@ -56,6 +60,7 @@
     force: yes
   with_items:
     - "{{ systools_packages_additional_backports_jessie }}"
+  when: systools_packages_additional_backports_jessie is defined
 
 - name: Bash global aliases
   lineinfile:
@@ -113,4 +118,3 @@
   with_items:
     - "{{ authorized_keys }}"
   when: authorized_keys != false
-
