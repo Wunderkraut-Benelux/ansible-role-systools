@@ -68,6 +68,18 @@
     - "{{ systools_bash_aliases }}"
   when: systools_bash_aliases != false
 
+- name: Bash welcome message
+  template:
+    src: /templates/bash_welcome.j2
+    dest: /etc/bash.bash_welcome
+    owner: root
+    mode: a+x
+
+- name: Ensure Bash welcome message is sourced
+  lineinfile:
+    path: /tmp/testfile
+    line: 'source /etc/bash.bash_welcome'
+
 - name: Cronjobs
   cron: name="{{ item.name }}"
         minute="{{ item.minute }}"
@@ -113,4 +125,3 @@
   with_items:
     - "{{ authorized_keys }}"
   when: authorized_keys != false
-

@@ -8,6 +8,9 @@ systools_bash_aliases:
       command: 'grep -rn --color --exclude-dir=.svn' }
 systools_bash_aliases_path: "/etc/bash.bashrc"
 
+systools_bash_welcome: |
+  Welcome to {{ hostname }}
+
 systools_cronjobs: [ ]
 
 systools_git_configfile: "/etc/gitconfig"
