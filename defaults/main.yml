@@ -42,6 +42,7 @@ systools_packages:
   - iftop
   - iotop
   - links
+  - ncdu
   - vim
   - vim-common
 
